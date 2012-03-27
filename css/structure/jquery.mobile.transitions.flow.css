@@ -1,7 +1,7 @@
 /* flow transition */
 .flow {
-	-webkit-transform-origin: 50% 30%;
-	-moz-transform-origin: 50% 30%;	
+	-webkit-transform-origin: 50% 50px;
+	-moz-transform-origin: 50% 50px;	
 	-webkit-box-shadow: 0 0 20px rgba(0,0,0,.4);
 	-moz-box-shadow: 0 0 20px rgba(0,0,0,.4);
 }
@@ -10,6 +10,7 @@
 	-moz-transform-origin: none;	
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
+	min-height: 150%;
 }
 .flow.out {
 	-webkit-transform: translateX(-100%) scale(.7);

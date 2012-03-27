@@ -72,6 +72,14 @@ var createHandler = function( sequential ){
 					.css( "min-height", "" );
 				
 				toggleViewportClass();	
+				
+				// Some platforms (iOS5) seem to forget scroll when a 3d transform is applied to the page
+				// This change checks to make sure scroll is correct, before correcting it
+				// Note that this will cause a jump after a 3D transition is complete, 
+				// If there's a remembered scroll distance for the $to page, common when revisting a page with "back"
+				if( $.support.scrollTop && $( window ).scrollTop() !== toScroll ){
+					$.mobile.silentScroll( toScroll );
+				}
 
 				deferred.resolve( name, reverse, $to, $from, true );
 			};
