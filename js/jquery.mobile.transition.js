@@ -31,7 +31,7 @@ var createHandler = function( sequential ){
 			cleanFrom = function(){
 				$from
 					.removeClass( $.mobile.activePageClass + " out in reverse " + name )
-					.height( "" );
+					.css( "min-height", "" );
 			},
 			doneOut = function() {
 
@@ -49,7 +49,7 @@ var createHandler = function( sequential ){
 				$.mobile.focusPage( $to );
 
 				// Jump to top or prev scroll, sometimes on iOS the page has not rendered yet.
-				$to.height( screenHeight + toScroll );
+				$to.css( "min-height", screenHeight + toScroll );
 				
 				$.mobile.silentScroll( toScroll );
 			
@@ -63,18 +63,13 @@ var createHandler = function( sequential ){
 		
 			doneIn = function() {
 			
-				if ( !sequential ) {
-					
-					$.mobile.silentScroll( toScroll );
-					
-					if( $from ){
-						cleanFrom();
-					}
+				if ( !sequential && $from ) {
+					cleanFrom();
 				}
 			
 				$to
 					.removeClass( "out in reverse " + name )
-					.height( "" );
+					.css( "min-height", "" );
 				
 				toggleViewportClass();	
 
@@ -94,7 +89,7 @@ var createHandler = function( sequential ){
 			}
 		
 			$from
-				.height( screenHeight + $(window ).scrollTop() )
+				.css( "min-height", screenHeight + $(window ).scrollTop() )
 				.addClass( name + " out" + reverseClass );
 		}
 		else {	
